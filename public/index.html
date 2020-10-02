@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Modulo Backend</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <p>Por favor llena los cammpos de abajo para registrarte</p>
+        <hr>
+        <label for="user"><b>Usuario</b></label>
+        <input type="text" placeholder="Usuario" name="user" id="user" required>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Email" name="email" id="email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+        <label for="psw-repeat"><b>Repetir Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+        <hr>
+
+        <p>Al apretar el boton <b>Registrar</b> vos estas aceptando los <a href="#">Terminos y condiciones</a>.</p>
+        <button type="submit" class="registerbtn" id="apifacial">Registrar</button>
+        <div id="result"></div>
+    </div>
+
+    
+
+    <script>
+
+        function showResult(text) {
+
+            document.querySelector('#result').innerHTML = text;
+        }
+
+
+
+        function session() {
+            return function () {
+
+                var data = {
+                    user: document.querySelector('#user').value,
+                    email: document.querySelector('#email').value,
+                    password: document.querySelector('#psw').value,
+                    confirmpwd: document.querySelector('#psw-repeat').value
+                };
+//http://localhost:3000/send
+                fetch('/send', {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    method: 'post',
+                    body: JSON.stringify(data)
+                })
+                    .then(response => response.json())
+                    .then(function (re) {
+
+                        console.log(re);
+                        return JSON.stringify(re);
+                    }
+
+                    )
+                    .then(text => showResult(text))
+                    .catch(error => showResult(error));
+            }
+        }
+
+        document.getElementById("apifacial").addEventListener("click", session());
+
+        function myFunction() {
+            alert("YOU CLICKED ME!");
+        }
+    </script>
+</body>
+
+</html>
