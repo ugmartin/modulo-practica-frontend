@@ -1,0 +1,12 @@
+npm-debug.log
+node-rest-osb-adapter/
+.gitlab-ci.yml
+.retireignore
+.npmignore
+.gitignore
+.eslintrc
+test/
+scripts/
+README.md
+charts-output/
+
