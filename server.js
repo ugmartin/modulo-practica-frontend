@@ -25,7 +25,7 @@ const loginAdapter = (req) => {
 }
 const responseAdapter = (isValid, loginData) =>{
     var data = {
-        message: "Usuario: " + loginData.usuario + "  fue creado exitosamente"
+        message: "Usuario: " + loginData.usuario + "  fue creado muy exitosamente"
     }
 
     if (!isValid) {
