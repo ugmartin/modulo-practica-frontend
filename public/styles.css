@@ -6,7 +6,7 @@
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], div[type=result] {
   width: 100%;
   padding: 10px;
   margin: 5px 0 22px 0;
@@ -52,3 +52,9 @@ a {
   background-color: #f1f1f1;
   text-align: center;
 }
+/*
+#result {
+  text-align: center;
+  color:rgb(171, 34, 184);
+  font-size: large;
+}*/
